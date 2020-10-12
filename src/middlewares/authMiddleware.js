@@ -1,6 +1,7 @@
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
+
 const hardCodedToken = process.env.BEARER_TOKEN;
 
 async function authMiddleWare(req, res, next) {
