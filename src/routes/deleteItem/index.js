@@ -1,8 +1,9 @@
 const express = require('express');
+const authMiddleWare = require('../../middlewares/authMiddleware');
 
 const router = express.Router();
 
-router.post('/', async (req, res) => {
+router.post('/', authMiddleWare, async (req, res) => {
   try {
     const { id } = req.body;
     res.status(200).send(`deleted ${id}`);
