@@ -4,10 +4,10 @@ const deleteItem = require('./deleteItem');
 const createItem = require('./createItem');
 
 const ROUTES = {
-  '/items': getItems,
-  '/item-edit': editItem,
-  '/item-delete': deleteItem,
-  '/item-create': createItem,
+  '/api/items': getItems,
+  '/api/item-edit': editItem,
+  '/api/item-delete': deleteItem,
+  '/api/item-create': createItem,
 };
 
 module.exports = ROUTES;

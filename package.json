@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "npx nodemon ./src/app.js",
     "lint": "eslint ./src",
-    "lint:fix": "eslint ./src --fix"
+    "lint:fix": "eslint ./src --fix",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
