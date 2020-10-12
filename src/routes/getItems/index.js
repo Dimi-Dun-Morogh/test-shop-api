@@ -1,10 +1,12 @@
 const express = require('express');
+const { getShoppingItemById, getAllShoppingItems } = require('../../controllers/shoppingItems');
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
   try {
-    res.status(200).send('shopping item');
+    const allItems = await getAllShoppingItems();
+    res.status(200).send(allItems);
   } catch (error) {
     res.status(400).send(error);
   }
@@ -13,7 +15,8 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    res.status(200).send(`item id${id}`);
+    const item = await getShoppingItemById(id);
+    res.status(200).send(item);
   } catch (error) {
     res.status(400).send(error);
   }
