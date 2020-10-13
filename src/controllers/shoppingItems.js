@@ -1,10 +1,27 @@
 const shoppingItem = require('../models/shoppingItem');
-const { getItemById, getAllItems, createItem, deleteItem, updateItem } = require('../db/db.crud');
+const {
+  getItemById,
+  getAllItems,
+  createItem,
+  deleteItem,
+  updateItem,
+  getItemByName,
+} = require('../db/db.crud');
+
+async function getShoppingItemById(id) {
+  try {
+    const item = await getItemById(shoppingItem, id);
+    return item;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
 
 async function createShoppingItem(data) {
   try {
-    const item = await createItem(shoppingItem, data);
-    return item;
+    await createItem(shoppingItem, data);
+    const updatedItem = await getItemByName(shoppingItem, data.name);
+    return updatedItem;
   } catch (error) {
     return Promise.reject(error);
   }
@@ -28,19 +45,11 @@ async function getAllShoppingItems() {
   }
 }
 
-async function getShoppingItemById(id) {
-  try {
-    const item = await getItemById(shoppingItem, id);
-    return item;
-  } catch (error) {
-    return Promise.reject(error);
-  }
-}
-
 async function updateShoppingItem(data) {
   try {
-    const item = await updateItem(shoppingItem, data);
-    return item;
+    await updateItem(shoppingItem, data);
+    const updatedItem = await getItemByName(shoppingItem, data.name);
+    return updatedItem;
   } catch (error) {
     return Promise.reject(error);
   }

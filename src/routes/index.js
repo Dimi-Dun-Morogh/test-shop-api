@@ -5,7 +5,7 @@ const createItem = require('./createItem');
 
 const ROUTES = {
   '/api/items': getItems,
-  '/api/item-edit': editItem,
+  '/api/item-update': editItem,
   '/api/item-delete': deleteItem,
   '/api/item-create': createItem,
 };
